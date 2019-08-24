@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeminarioLP3StoreContainer" CdmEntityContainer="SeminarioLP3Container">
+    <EntitySetMapping Name="Rua">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Rua)">
+        <MappingFragment StoreEntitySet="Rua">
+          <ScalarProperty Name="IdRua" ColumnName="IdRua" />
+          <ScalarProperty Name="FkBairro" ColumnName="FkBairro" />
+          <ScalarProperty Name="FkTipoComercio" ColumnName="FkTipoComercio" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoComercio">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.TipoComercio)">
+        <MappingFragment StoreEntitySet="TipoComercio">
+          <ScalarProperty Name="IdComercio" ColumnName="IdComercio" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="OrgaoRegulador" ColumnName="OrgaoRegulador" />
+          <ScalarProperty Name="Permissao" ColumnName="Permissao" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bairro">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Bairro)">
+        <MappingFragment StoreEntitySet="Bairro">
+          <ScalarProperty Name="IdBairro" ColumnName="IdBairro" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaProdutoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.CategoriaProduto)">
+        <MappingFragment StoreEntitySet="CategoriaProdutoSet">
+          <ScalarProperty Name="IdCategoriaProduto" ColumnName="IdCategoriaProduto" />
+          <ScalarProperty Name="FkTipoComercio" ColumnName="FkTipoComercio" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loja">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Loja)">
+        <MappingFragment StoreEntitySet="Loja">
+          <ScalarProperty Name="IdLoja" ColumnName="IdLoja" />
+          <ScalarProperty Name="FkRua" ColumnName="FkRua" />
+          <ScalarProperty Name="NomeComercial" ColumnName="NomeComercial" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="RazaoSocial" ColumnName="RazaoSocial" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

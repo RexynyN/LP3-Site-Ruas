@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SeminarioLP3.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SeminarioLP3StoreContainer">
+    <EntitySet Name="Rua" EntityType="SeminarioLP3.Store.Rua" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoComercio" EntityType="SeminarioLP3.Store.TipoComercio" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bairro" EntityType="SeminarioLP3.Store.Bairro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoriaProdutoSet" EntityType="SeminarioLP3.Store.CategoriaProdutoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Loja" EntityType="SeminarioLP3.Store.Loja" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="LojaRua" Association="SeminarioLP3.Store.LojaRua">
+      <End Role="Loja" EntitySet="Loja" />
+      <End Role="Rua" EntitySet="Rua" />
+    </AssociationSet>
+    <AssociationSet Name="BairroRua" Association="SeminarioLP3.Store.BairroRua">
+      <End Role="Bairro" EntitySet="Bairro" />
+      <End Role="Rua" EntitySet="Rua" />
+    </AssociationSet>
+    <AssociationSet Name="TipoComercioRua" Association="SeminarioLP3.Store.TipoComercioRua">
+      <End Role="TipoComercio" EntitySet="TipoComercio" />
+      <End Role="Rua" EntitySet="Rua" />
+    </AssociationSet>
+    <AssociationSet Name="CategoriaProdutoTipoComercio" Association="SeminarioLP3.Store.CategoriaProdutoTipoComercio">
+      <End Role="CategoriaProduto" EntitySet="CategoriaProdutoSet" />
+      <End Role="TipoComercio" EntitySet="TipoComercio" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Rua">
+    <Key>
+      <PropertyRef Name="IdRua" />
+    </Key>
+    <Property Name="IdRua" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FkBairro" Type="int" Nullable="false" />
+    <Property Name="FkTipoComercio" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CEP" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoComercio">
+    <Key>
+      <PropertyRef Name="IdComercio" />
+    </Key>
+    <Property Name="IdComercio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrgaoRegulador" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Permissao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bairro">
+    <Key>
+      <PropertyRef Name="IdBairro" />
+    </Key>
+    <Property Name="IdBairro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UF" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Zona" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cidade" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriaProdutoSet">
+    <Key>
+      <PropertyRef Name="IdCategoriaProduto" />
+    </Key>
+    <Property Name="IdCategoriaProduto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FkTipoComercio" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Loja">
+    <Key>
+      <PropertyRef Name="IdLoja" />
+    </Key>
+    <Property Name="IdLoja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FkRua" Type="int" Nullable="false" />
+    <Property Name="NomeComercial" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CNPJ" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RazaoSocial" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Site" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="LojaRua">
+    <End Role="Loja" Type="SeminarioLP3.Store.Loja" Multiplicity="*" />
+    <End Role="Rua" Type="SeminarioLP3.Store.Rua" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Rua">
+        <PropertyRef Name="IdRua" />
+      </Principal>
+      <Dependent Role="Loja">
+        <PropertyRef Name="FkRua" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BairroRua">
+    <End Role="Bairro" Type="SeminarioLP3.Store.Bairro" Multiplicity="1" />
+    <End Role="Rua" Type="SeminarioLP3.Store.Rua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bairro">
+        <PropertyRef Name="IdBairro" />
+      </Principal>
+      <Dependent Role="Rua">
+        <PropertyRef Name="FkBairro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TipoComercioRua">
+    <End Role="TipoComercio" Type="SeminarioLP3.Store.TipoComercio" Multiplicity="1" />
+    <End Role="Rua" Type="SeminarioLP3.Store.Rua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoComercio">
+        <PropertyRef Name="IdComercio" />
+      </Principal>
+      <Dependent Role="Rua">
+        <PropertyRef Name="FkTipoComercio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoriaProdutoTipoComercio">
+    <End Role="CategoriaProduto" Type="SeminarioLP3.Store.CategoriaProdutoSet" Multiplicity="*" />
+    <End Role="TipoComercio" Type="SeminarioLP3.Store.TipoComercio" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TipoComercio">
+        <PropertyRef Name="IdComercio" />
+      </Principal>
+      <Dependent Role="CategoriaProduto">
+        <PropertyRef Name="FkTipoComercio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SeminarioLP3" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SeminarioLP3Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Rua" EntityType="SeminarioLP3.Rua" />
+          <EntitySet Name="TipoComercio" EntityType="SeminarioLP3.TipoComercio" />
+          <EntitySet Name="Bairro" EntityType="SeminarioLP3.Bairro" />
+          <EntitySet Name="CategoriaProdutoSet" EntityType="SeminarioLP3.CategoriaProduto" />
+          <EntitySet Name="Loja" EntityType="SeminarioLP3.Loja" />
+          <AssociationSet Name="LojaRua" Association="SeminarioLP3.LojaRua">
+            <End Role="Loja" EntitySet="Loja" />
+            <End Role="Rua" EntitySet="Rua" />
+          </AssociationSet>
+          <AssociationSet Name="BairroRua" Association="SeminarioLP3.BairroRua">
+            <End Role="Bairro" EntitySet="Bairro" />
+            <End Role="Rua" EntitySet="Rua" />
+          </AssociationSet>
+          <AssociationSet Name="TipoComercioRua" Association="SeminarioLP3.TipoComercioRua">
+            <End Role="TipoComercio" EntitySet="TipoComercio" />
+            <End Role="Rua" EntitySet="Rua" />
+          </AssociationSet>
+          <AssociationSet Name="CategoriaProdutoTipoComercio" Association="SeminarioLP3.CategoriaProdutoTipoComercio">
+            <End Role="CategoriaProduto" EntitySet="CategoriaProdutoSet" />
+            <End Role="TipoComercio" EntitySet="TipoComercio" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Rua">
+          <Key>
+            <PropertyRef Name="IdRua" />
+          </Key>
+          <Property Name="IdRua" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Loja" Relationship="SeminarioLP3.LojaRua" FromRole="Rua" ToRole="Loja" />
+          <NavigationProperty Name="Bairro" Relationship="SeminarioLP3.BairroRua" FromRole="Rua" ToRole="Bairro" />
+          <Property Name="FkBairro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoComercio" Relationship="SeminarioLP3.TipoComercioRua" FromRole="Rua" ToRole="TipoComercio" />
+          <Property Name="FkTipoComercio" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="CEP" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoComercio">
+          <Key>
+            <PropertyRef Name="IdComercio" />
+          </Key>
+          <Property Name="IdComercio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rua" Relationship="SeminarioLP3.TipoComercioRua" FromRole="TipoComercio" ToRole="Rua" />
+          <NavigationProperty Name="CategoriaProduto" Relationship="SeminarioLP3.CategoriaProdutoTipoComercio" FromRole="TipoComercio" ToRole="CategoriaProduto" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="OrgaoRegulador" Type="String" Nullable="false" />
+          <Property Name="Permissao" Type="String" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" ConcurrencyMode="Fixed" />
+        </EntityType>
+        <EntityType Name="Bairro">
+          <Key>
+            <PropertyRef Name="IdBairro" />
+          </Key>
+          <Property Name="IdBairro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rua" Relationship="SeminarioLP3.BairroRua" FromRole="Bairro" ToRole="Rua" />
+          <Property Name="Nome" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="UF" Type="String" Nullable="false" />
+          <Property Name="Zona" Type="String" Nullable="false" />
+          <Property Name="Cidade" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriaProduto">
+          <Key>
+            <PropertyRef Name="IdCategoriaProduto" />
+          </Key>
+          <Property Name="IdCategoriaProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TipoComercio" Relationship="SeminarioLP3.CategoriaProdutoTipoComercio" FromRole="CategoriaProduto" ToRole="TipoComercio" />
+          <Property Name="FkTipoComercio" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loja">
+          <Key>
+            <PropertyRef Name="IdLoja" />
+          </Key>
+          <Property Name="IdLoja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rua" Relationship="SeminarioLP3.LojaRua" FromRole="Loja" ToRole="Rua" />
+          <Property Name="FkRua" Type="Int32" Nullable="false" />
+          <Property Name="NomeComercial" Type="String" Nullable="false" />
+          <Property Name="CNPJ" Type="String" Nullable="false" />
+          <Property Name="RazaoSocial" Type="String" Nullable="false" />
+          <Property Name="Telefone" Type="String" Nullable="false" />
+          <Property Name="Site" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="LojaRua">
+          <End Type="SeminarioLP3.Loja" Role="Loja" Multiplicity="*" />
+          <End Type="SeminarioLP3.Rua" Role="Rua" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Rua">
+              <PropertyRef Name="IdRua" />
+            </Principal>
+            <Dependent Role="Loja">
+              <PropertyRef Name="FkRua" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BairroRua">
+          <End Type="SeminarioLP3.Bairro" Role="Bairro" Multiplicity="1" />
+          <End Type="SeminarioLP3.Rua" Role="Rua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bairro">
+              <PropertyRef Name="IdBairro" />
+            </Principal>
+            <Dependent Role="Rua">
+              <PropertyRef Name="FkBairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoComercioRua">
+          <End Type="SeminarioLP3.TipoComercio" Role="TipoComercio" Multiplicity="1" />
+          <End Type="SeminarioLP3.Rua" Role="Rua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoComercio">
+              <PropertyRef Name="IdComercio" />
+            </Principal>
+            <Dependent Role="Rua">
+              <PropertyRef Name="FkTipoComercio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoriaProdutoTipoComercio">
+          <End Type="SeminarioLP3.CategoriaProduto" Role="CategoriaProduto" Multiplicity="*" />
+          <End Type="SeminarioLP3.TipoComercio" Role="TipoComercio" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TipoComercio">
+              <PropertyRef Name="IdComercio" />
+            </Principal>
+            <Dependent Role="CategoriaProduto">
+              <PropertyRef Name="FkTipoComercio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeminarioLP3StoreContainer" CdmEntityContainer="SeminarioLP3Container">
+    <EntitySetMapping Name="Rua">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Rua)">
+        <MappingFragment StoreEntitySet="Rua">
+          <ScalarProperty Name="IdRua" ColumnName="IdRua" />
+          <ScalarProperty Name="FkBairro" ColumnName="FkBairro" />
+          <ScalarProperty Name="FkTipoComercio" ColumnName="FkTipoComercio" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoComercio">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.TipoComercio)">
+        <MappingFragment StoreEntitySet="TipoComercio">
+          <ScalarProperty Name="IdComercio" ColumnName="IdComercio" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="OrgaoRegulador" ColumnName="OrgaoRegulador" />
+          <ScalarProperty Name="Permissao" ColumnName="Permissao" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bairro">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Bairro)">
+        <MappingFragment StoreEntitySet="Bairro">
+          <ScalarProperty Name="IdBairro" ColumnName="IdBairro" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaProdutoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.CategoriaProduto)">
+        <MappingFragment StoreEntitySet="CategoriaProdutoSet">
+          <ScalarProperty Name="IdCategoriaProduto" ColumnName="IdCategoriaProduto" />
+          <ScalarProperty Name="FkTipoComercio" ColumnName="FkTipoComercio" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loja">
+      <EntityTypeMapping TypeName="IsTypeOf(SeminarioLP3.Loja)">
+        <MappingFragment StoreEntitySet="Loja">
+          <ScalarProperty Name="IdLoja" ColumnName="IdLoja" />
+          <ScalarProperty Name="FkRua" ColumnName="FkRua" />
+          <ScalarProperty Name="NomeComercial" ColumnName="NomeComercial" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="RazaoSocial" ColumnName="RazaoSocial" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

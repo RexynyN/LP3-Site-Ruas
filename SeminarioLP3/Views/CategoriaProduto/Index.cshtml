@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SeminarioLP3.Models.CategoriaProduto>
+
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>Visualizar</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoComercio.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoComercio.Descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCategoriaProduto }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdCategoriaProduto }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdCategoriaProduto })
+        </td>
+    </tr>
+}
+
+</table>

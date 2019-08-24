@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<style>
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .item h5 {
+        color: red;
+    }
+</style>
+
+<div style="margin-top:20px;" class="jumbotron">
+    <h1>Ruas de Comércio</h1>
+    <p class="btn btn-default">@Html.ActionLink("Sobre Nós", "About", "Home") &raquo;</p>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img class="d-block w-100" src="img/slide1.jpg" alt="slide1">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Rua São Caetano	- Bom Retiro (SP)</h5>
+            </div>
+        </div>
+
+        <div class="item">
+            <img class="d-block w-100" src="img/slide2.jpeg" alt="slide2">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Rua Santa Ifigênia - República (SP)</h5>
+            </div>
+        </div>
+
+        <div class="item">
+            <img class="d-block w-100" src="img/slide3.jpeg" alt="slide3">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Rua Oscar Freire - Jardins (SP)</h5>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Cliente?</h2>
+        <p>
+            Quer encontrar uma rua de comércio com aqueles produtos que você procura? Faça uma pesquisa, e acerte
+            na hora de fazer as compras!
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Encontrar Ruas", "Index", "Rua") &raquo;</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Quer cadastrar uma nova Rua?</h2>
+        <p>
+            Cadastrar uma nova rua de comércio para crescer os empreendimentos do seu bairro é sempre uma boa coisa.
+            <br>E nunca foi tão fácil cadastrar a sua!
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Cadastrar Rua", "Index", "Rua") &raquo;</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Comerciante?</h2>
+        <p>Quer Registrar sua loja em rua de comércio que já existe? Faça isso em minutos!</p>
+        <p class="btn btn-default">@Html.ActionLink("Cadastrar Loja", "Index", "Loja") &raquo;</p>
+    </div>
+</div>

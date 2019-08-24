@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5c090cb20c24134b4551db1e754cfd0" Name="Diagram1" >
+        <EntityTypeShape EntityType="SeminarioLP3.Rua" Width="1.5" PointX="1.125" PointY="0.5" />
+        <EntityTypeShape EntityType="SeminarioLP3.TipoComercio" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="SeminarioLP3.Bairro" Width="1.5" PointX="4" PointY="4.375" />
+        <EntityTypeShape EntityType="SeminarioLP3.CategoriaProduto" Width="1.5" PointX="7.375" PointY="0.5" />
+        <EntityTypeShape EntityType="SeminarioLP3.Loja" Width="1.5" PointX="1.125" PointY="4.375" />
+        <AssociationConnector Association="SeminarioLP3.LojaRua" />
+        <AssociationConnector Association="SeminarioLP3.BairroRua" />
+        <AssociationConnector Association="SeminarioLP3.TipoComercioRua" />
+        <AssociationConnector Association="SeminarioLP3.CategoriaProdutoTipoComercio" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

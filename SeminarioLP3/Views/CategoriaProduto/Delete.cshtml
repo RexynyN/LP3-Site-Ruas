@@ -1,0 +1,49 @@
+﻿@model SeminarioLP3.Models.CategoriaProduto
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Você tem certeza que quer deletar?</h3>
+<div>
+    <h4>Categoria de Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoComercio.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoComercio.Descricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        @Html.ActionLink("Voltar para a Lista", "Index")
+    </div>
+    }
+</div>

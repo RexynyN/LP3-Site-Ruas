@@ -1,0 +1,51 @@
+﻿@model SeminarioLP3.Models.TipoComercio
+
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Tipo de Comércio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrgaoRegulador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrgaoRegulador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdComercio }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</p>
